@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZkart</title>
+    <!-- bootstrap4cdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- bootstrap4cdn -->
+
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <!-- Custom Style Sheet -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css">
+    <script src="https://kit.fontawesome.com/d992b2350c.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+            <i class="opencart icon"></i>
+            AZkart
+        </a>
+
+        <div class="searchbar">
+                <input class="search_input" type="text" name="" placeholder="Search...">
+                <a href="#" class="search_icon"><i class="search icon"></i></a>
+        </div>
+
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+
+            <ul class="navbar-nav ml-auto" style="text-align: right;">
+                
+                <% if(!currentUser){ %> 
+                    
+                    <li>
+                        <a class="nav-link" href="/register">SignUp</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                <% } else { %>
+
+                    <li>
+                        <h class="nav-link"> Signed in as <%= currentUser.username %></h> 
+                    </li>
+                    
+                    <li>
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                <% } %> 
+            </ul>
+        </div>
+        <ul class="nav navbar-nav ">
+            <li>
+                <a href="/shopping-cart"><i class="fas fa-shopping-cart"></i></a>
+               
+                <% if(session.cart) { %>
+                    <span style="color: red;" class="badge"><%= session.cart.totalQty %></span>
+                <% } %>
+            </li>
+        </ul>
+    </nav>
